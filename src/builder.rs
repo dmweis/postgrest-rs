@@ -52,6 +52,8 @@ impl Builder {
     where
         T: AsRef<str>,
     {
+        self.headers
+            .insert("apiKey", HeaderValue::from_str(token.as_ref()).unwrap());
         self.headers.insert(
             "Authorization",
             HeaderValue::from_str(&format!("Bearer {}", token.as_ref())).unwrap(),
